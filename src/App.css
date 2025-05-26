@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #4ecdc4;
+  --background-color: #2c3e50;
+  --text-color: #ecf0f1;
+  --border-color: #95a5a6;
+  --urgent-color: #e74c3c;
+  --moderate-color: #f1c40f;
+  --low-color: #2ecc71;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.retro-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 4px solid var(--border-color);
+  background: linear-gradient(45deg, #2c3e50, #34495e);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.retro-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-shadow: 3px 3px 0 var(--secondary-color);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.retro-subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.main-content {
+  display: grid;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.task-section {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.retro-input,
+.retro-textarea,
+.retro-select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--border-color);
+  color: var(--text-color);
+  font-family: 'Press Start 2P', cursive;
+}
+
+.retro-button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--text-color);
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.retro-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.retro-table th,
+.retro-table td {
+  padding: 1rem;
+  text-align: left;
+  border: 2px solid var(--border-color);
+}
+
+.retro-table th {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--secondary-color);
+}
+
+.task-row {
+  transition: all 0.3s ease;
+}
+
+.task-row:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.task-row.completed {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.priority-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.priority-urgent {
+  background-color: var(--urgent-color);
+}
+
+.priority-moderate {
+  background-color: var(--moderate-color);
+}
+
+.priority-low {
+  background-color: var(--low-color);
+}
+
+.character-progress {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.experience-bar-container {
+  width: 100%;
+  height: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--border-color);
+  margin-top: 1rem;
+  position: relative;
+}
+
+.experience-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.5s ease-in-out;
+}
+
+.experience-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+}
+
+.retro-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 2px solid var(--border-color);
+  font-size: 0.8rem;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px var(--secondary-color),
+                 0 0 10px var(--secondary-color),
+                 0 0 15px var(--primary-color);
+  }
+  to {
+    text-shadow: 0 0 10px var(--secondary-color),
+                 0 0 20px var(--secondary-color),
+                 0 0 30px var(--primary-color);
+  }
+}
+
+/* Animations pour les actions */
+@keyframes complete {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.retro-button.complete {
+  background-color: var(--low-color);
+}
+
+.retro-button.delete {
+  background-color: var(--urgent-color);
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Responsive Design */
+/* Tablettes et petits ordinateurs portables */
+@media (max-width: 1024px) {
+  .app-container {
+    padding: 1.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .main-content {
+    max-width: 800px;
+  }
+  
+  .retro-title {
+    font-size: 2rem;
+  }
+  
+  .retro-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .task-section {
+    padding: 1.2rem;
+  }
+}
+
+/* Tablettes */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+    max-width: 95%;
+  }
+  
+  .main-content {
+    max-width: 100%;
+  }
+
+  .retro-title {
+    font-size: 1.8rem;
+  }
+
+  .retro-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .retro-table {
+    font-size: 0.8rem;
+  }
+  
+  .retro-table th,
+  .retro-table td {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .character-progress {
+    padding: 1.5rem;
+  }
+  
+  .experience-text {
+    font-size: 0.7rem;
+  }
+}
+
+/* Grands smartphones */
+@media (max-width: 576px) {
+  .app-container {
+    padding: 0.8rem;
+    max-width: 100%;
+  }
+  
+  .retro-title {
+    font-size: 1.5rem;
+  }
+  
+  .retro-subtitle {
+    font-size: 1rem;
+  }
+  
+  .retro-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .task-section {
+    padding: 1rem;
+  }
+  
+  .character-progress {
+    padding: 1rem;
+  }
+  
+  .experience-bar-container {
+    height: 1.5rem;
+  }
+  
+  .experience-text {
+    font-size: 0.6rem;
+  }
+}
+
+/* Petits smartphones */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0.5rem;
+  }
+  
+  .retro-title {
+    font-size: 1.2rem;
+  }
+  
+  .retro-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .retro-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .retro-table th,
+  .retro-table td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  
+  .priority-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.6rem;
+  }
+  
+  .task-actions {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .retro-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.7rem;
+  }
+  
+  .retro-input,
+  .retro-textarea,
+  .retro-select {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .character-info h2 {
+    font-size: 1rem;
+  }
+  
+  .character-title {
+    font-size: 0.8rem;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 360px) {
+  .retro-title {
+    font-size: 1rem;
+  }
+  
+  .retro-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .retro-table th,
+  .retro-table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.6rem;
+  }
+  
+  .retro-button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.6rem;
+  }
+}
+
+/* Styles pour les cartes de tâches sur mobile */
+.task-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.task-card.completed {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.task-card-title {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.task-card-description {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.task-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.character-stats {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+}
+
+.character-stats p {
+  margin: 0;
+}
+
+.install-pwa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.install-button {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.install-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+  .install-button {
+    padding: 10px 20px;
+    font-size: 0.7rem;
+  }
+}

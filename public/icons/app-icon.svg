@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond avec dégradé -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5253;stop-opacity:1" />
+    </linearGradient>
+    <!-- Pattern pixelisé pour l'effet rétro -->
+    <pattern id="pixel" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="32" height="32" fill="#00000010"/>
+    </pattern>
+  </defs>
+  
+  <!-- Fond principal avec coins arrondis -->
+  <rect width="512" height="512" fill="url(#grad)" rx="128" ry="128"/>
+  
+  <!-- Effet pixelisé -->
+  <rect width="512" height="512" fill="url(#pixel)" rx="128" ry="128"/>
+  
+  <!-- Bordure rétro -->
+  <rect x="24" y="24" width="464" height="464" fill="none" 
+        stroke="white" stroke-width="8" rx="112" ry="112" 
+        opacity="0.3"/>
+  
+  <!-- Texte avec ombre -->
+  <text x="256" y="320" fill="#00000030" 
+        font-family="'Press Start 2P', monospace" font-size="160" 
+        text-anchor="middle" dominant-baseline="middle">
+    TG
+  </text>
+  <text x="256" y="310" fill="white" 
+        font-family="'Press Start 2P', monospace" font-size="160" 
+        text-anchor="middle" dominant-baseline="middle">
+    TG
+  </text>
+</svg> 
