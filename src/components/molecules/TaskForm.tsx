@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useTaskStore } from "../../store/taskStore";
+import { useGameStore } from "../../store/gameStore";
 import { Input } from "../atoms/Input";
 import { Select } from "../atoms/Select";
 import { Button } from "../atoms/Button";
@@ -16,7 +16,7 @@ export const TaskForm: React.FC = () => {
 		"medium"
 	);
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
-	const addTask = useTaskStore((state) => state.addTask);
+	const addTask = useGameStore((state) => state.addTask);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -31,7 +31,12 @@ export const TaskForm: React.FC = () => {
 		e.preventDefault();
 		if (!title.trim()) return;
 
-		addTask(title.trim(), difficulty);
+		addTask({
+			title: title.trim(),
+			description: "",
+			priority: "Modéré",
+			difficulty: "medium",
+		});
 		setTitle("");
 		setDifficulty("medium");
 	};

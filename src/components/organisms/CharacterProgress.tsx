@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useCharacterStore } from "../../store/characterStore";
+import { useGameStore } from "../../store/gameStore";
 
 export const CharacterProgress: React.FC = () => {
-	const character = useCharacterStore((state) => state.character);
+	const character = useGameStore((state) => state.character);
 	const progressPercentage =
 		(character.experience / character.experienceToNextLevel) * 100;
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 576);

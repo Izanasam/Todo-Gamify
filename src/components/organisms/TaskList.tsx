@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useTaskStore } from "../../store/taskStore";
+import { useGameStore } from "../../store/gameStore";
 import { TaskRow } from "../molecules/TaskRow";
 import { Task } from "../../types";
 import { Badge } from "../atoms/Badge";
 import { Button } from "../atoms/Button";
 
 export const TaskList: React.FC = () => {
-	const tasks = useTaskStore((state) => state.tasks);
-	const toggleTask = useTaskStore((state) => state.toggleTask);
-	const deleteTask = useTaskStore((state) => state.deleteTask);
+	const tasks = useGameStore((state) => state.tasks);
+	const completeTask = useGameStore((state) => state.completeTask);
+	const deleteTask = useGameStore((state) => state.deleteTask);
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
 	useEffect(() => {
@@ -40,7 +40,7 @@ export const TaskList: React.FC = () => {
 						</div>
 						<div className="task-card-actions">
 							{!task.completed && (
-								<Button variant="complete" onClick={() => toggleTask(task.id)}>
+								<Button variant="complete" onClick={() => completeTask(task.id)}>
 									Terminer
 								</Button>
 							)}
@@ -85,7 +85,7 @@ export const TaskList: React.FC = () => {
 									{!task.completed && (
 										<Button
 											variant="complete"
-											onClick={() => toggleTask(task.id)}
+											onClick={() => completeTask(task.id)}
 										>
 											✓
 										</Button>

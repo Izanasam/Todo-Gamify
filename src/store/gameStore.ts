@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { GameState, Task, Character } from "../types";
+import { GameState, Task } from "../types";
 
 const calculateExperienceToNextLevel = (level: number) => {
 	return Math.floor(100 * Math.pow(1.5, level - 1));

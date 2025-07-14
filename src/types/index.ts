@@ -5,6 +5,7 @@ export interface Task {
 	title: string;
 	description?: string;
 	priority: TaskPriority;
+	difficulty: "easy" | "medium" | "hard";
 	completed: boolean;
 	createdAt: Date;
 }
